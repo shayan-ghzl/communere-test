@@ -1,0 +1,8 @@
+<!-- Search Field -->
+<mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>Search Added Meciations</mat-label>
+    <input type="text" matInput (input)="setFilter($event)">
+</mat-form-field>
+
+<!-- Add Button -->
+<button mat-flat-button color="primary" (click)="openDialog()">Add Medication</button>

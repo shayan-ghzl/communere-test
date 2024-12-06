@@ -39,3 +39,10 @@ $bs-teal-rgb: mixins.to-rgb($bs-teal) !default;
 
 $bs-cyan: #0dcaf0 !default;
 $bs-cyan-rgb: mixins.to-rgb($bs-cyan) !default;
+
+// ----------------anchor----------------
+$link-color: $primary-color !default;
+$link-hover-color: $primary-color !default;
+// ----------------autofill----------------
+$autofill-color: #484848 !default;
+$autofill-disabled-color: #c9c9c9 !default;

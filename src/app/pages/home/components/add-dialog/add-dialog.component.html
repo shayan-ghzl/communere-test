@@ -1,0 +1,96 @@
+<div mat-dialog-title>
+    <h1>{{(data) ? ('Edit ' + (data && data.title)) : 'Add New Reminder'}}</h1>
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon aria-label="close icon" fontIcon="close"></mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <form [formGroup]="formGroup">
+        <div class="fields-container">
+
+            <!-- Title Field -->
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" type="text">
+                <mat-error>{{formGroup.get('title')! | controlError}}</mat-error>
+            </mat-form-field>
+
+            <div class="row-span">
+                <!-- Dosage Field -->
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>Dosage</mat-label>
+                    <input matInput formControlName="dosage" type="text">
+                    <mat-error>{{formGroup.get('dosage')! | controlError}}</mat-error>
+                </mat-form-field>
+
+                <!-- Unit Field -->
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>Unit</mat-label>
+                    <mat-select formControlName="unit">
+                        <mat-option value="Capsules">Capsules</mat-option>
+                        <mat-option value="Tables">Tables</mat-option>
+                        <mat-option value="Applications">Applications</mat-option>
+                        <mat-option value="Drops">Drops</mat-option>
+                        <mat-option value="Milligrams">Milligrams</mat-option>
+                        <mat-option value="Micrograms">Micrograms</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Frequency Fieldset -->
+            <fieldset>
+                <legend>Frequency</legend>
+
+                <div class="field-wrapper">
+                    <label>Days</label>
+                    <mat-button-toggle-group formControlName="days" [hideMultipleSelectionIndicator]="true" multiple>
+                        <mat-button-toggle value="Mon">Mon</mat-button-toggle>
+                        <mat-button-toggle value="Tue">Tue</mat-button-toggle>
+                        <mat-button-toggle value="Wed">Wed</mat-button-toggle>
+                        <mat-button-toggle value="Thu">Thu</mat-button-toggle>
+                        <mat-button-toggle value="Fri">Fri</mat-button-toggle>
+                        <mat-button-toggle value="Sat">Sat</mat-button-toggle>
+                        <mat-button-toggle value="Sun">Sun</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+
+                <div class="field-wrapper">
+                    <label>Time</label>
+                    <div formArrayName="time">
+                        @for (item of time.controls; track item) {
+                        <div class="time-array-wrapper">
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <input matInput [formControlName]="$index" [matTimepicker]="minutesPicker">
+                                <mat-timepicker-toggle matIconSuffix [for]="minutesPicker" />
+                                <mat-timepicker interval="1min" #minutesPicker />
+                                <mat-error>{{time.get($index.toString())! | controlError}}</mat-error>
+                            </mat-form-field>
+
+                            @if (!$first) {
+                            <button mat-icon-button aria-label="edit icon" (click)="removeItem($index)">
+                                <mat-icon color="primary">delete</mat-icon>
+                            </button>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <button mat-button (click)="addItem()" [disabled]="loadingSpinner()">Add time</button>
+
+            </fieldset>
+
+        </div>
+    </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="end">
+    <button type="button" mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+    <button type="button" mat-flat-button color="primary" [disabled]="formGroup.invalid || formGroup.pristine || loadingSpinner()" (click)="addOrEdit()">
+        {{(data) ? 'Edit' : 'Add'}}
+        @if (loadingSpinner()) {
+        <mat-spinner matButtonIcon iconPositionEnd [diameter]="18" color="primary" />
+        }
+    </button>
+</div>

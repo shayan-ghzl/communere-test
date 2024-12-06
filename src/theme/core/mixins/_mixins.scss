@@ -1,14 +1,16 @@
+@use 'sass:color';
+
 @function to-rgb($value) {
-    @return rgb(red($value), green($value), blue($value));
+    @return '#{color.channel($value, "red")}, #{color.channel($value, "green")}, #{color.channel($value, "blue")}';
 }
 @function opaque($background, $foreground) {
-    @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
+    @return color.mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
 }
 @function tint-color($color, $weight) {
-    @return mix(white, $color, $weight);
+    @return color.mix(white, $color, $weight);
 }
 @function shade-color($color, $weight) {
-    @return mix(black, $color, $weight);
+    @return color.mix(black, $color, $weight);
 }
 @function shift-color($color, $weight) {
     @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));

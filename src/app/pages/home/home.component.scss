@@ -1,0 +1,15 @@
+@use "../../../theme/core/environments" as env;
+@use "../../../theme/core/breakpoints" as brk;
+
+:host {
+    display: block;
+    width: 100%;
+    max-width: env.$layout-max-width;
+    margin: 24px auto;
+}
+
+@include brk.layoutMaxWidth {
+    :host {
+        padding: 0 env.$tablet-padding-x;
+    }
+}

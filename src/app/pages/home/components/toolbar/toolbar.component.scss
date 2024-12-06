@@ -1,0 +1,35 @@
+@use "../../../../../theme/core/environments" as env;
+@use "../../../../../theme/core/breakpoints" as brk;
+
+:host {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 24px;
+    margin-bottom: 36px;
+    white-space: nowrap;
+}
+
+mat-form-field {
+    margin: 0 auto;
+    padding-left: 148px;
+    max-width: 648px;
+    width: 100%;
+}
+
+button {
+    min-width: 148px;
+}
+
+@include brk.tablet {
+    mat-form-field {
+        padding-left: 0;
+        max-width: 100%;
+    }
+}
+@include brk.smallTablet {
+    :host {
+        gap: 16px;
+    }
+}

@@ -131,7 +131,7 @@ label {
     font-size: var(--label-font-size);
     font-weight: var(--label-font-weight);
     line-height: var(--label-line-height);
-    color: var(--label-color);
+    color: var(--label-color, #{env.$text-color});
     margin: var(--label-margin);
     padding: var(--label-padding);
     text-align: var(--label-text-align);
@@ -186,6 +186,7 @@ fieldset {
         font-weight: var(--legend-font-weight, 700);
         color: var(--legend-color, #{env.$text-color});
         padding: var(--legend-padding, 0 4px);
+        text-align: var(--legend-text-align, #{env.$text-align});
     }
 }
 

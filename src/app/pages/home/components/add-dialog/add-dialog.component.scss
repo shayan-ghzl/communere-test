@@ -1,0 +1,30 @@
+.fields-container {
+    padding: 8px 0;
+    --label-display: block;
+    --label-margin: 0 0 6px 0;
+    --mat-standard-button-toggle-selected-state-background-color: #dae2f9;
+    --label-font-size: 14px;
+    --fieldset-border-radius: 4px;
+    --fieldset-border-width: 1px;
+    --fieldset-border-color: #b7b7b7;
+}
+mat-form-field {
+    width: 100%;
+}
+.row-span {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 160px;
+    align-items: start;
+    gap: 16px;
+    margin: 24px 0;
+}
+.field-wrapper {
+    margin-bottom: 32px;
+}
+.time-array-wrapper {
+    display: flex;
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
