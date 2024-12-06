@@ -77,7 +77,9 @@
                     </div>
                 </div>
 
-                <button mat-button (click)="addItem()" [disabled]="loadingSpinner()">Add time</button>
+                @if (time.controls.length < 5) {
+                    <button mat-button (click)="addItem()" [disabled]="loadingSpinner()">Add time</button>
+                }
 
             </fieldset>
 

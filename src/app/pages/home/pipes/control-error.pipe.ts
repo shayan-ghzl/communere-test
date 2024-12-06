@@ -19,6 +19,8 @@ export class ControlErrorPipe implements PipeTransform {
         return 'Input value is not valid';
       } else if ((control.errors['minlength'])) {
         return 'Input value must be at least 3 characters';
+      } else if ((control.errors['dateDuplicated'])) {
+        return 'Time cannot be the same';
       }
     }
     return defaultMessage;

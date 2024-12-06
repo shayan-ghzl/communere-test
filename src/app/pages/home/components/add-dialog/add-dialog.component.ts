@@ -11,6 +11,7 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
 import { Reminder } from '../../models/models';
 import { ControlErrorPipe } from '../../pipes/control-error.pipe';
 import { StatesService } from '../../services/states.service';
+import { dateNotDuplicatedValidator } from '../../validators/validators';
 
 @Component({
   selector: 'app-add-dialog',
@@ -39,7 +40,7 @@ export class AddDialogComponent {
     days: new FormControl<string[] | null>(null, [Validators.required]),
     time: new FormArray([
       new FormControl<Date>(new Date(), [Validators.required]),
-    ])
+    ], [dateNotDuplicatedValidator()])
   });
 
   loadingSpinner = signal(false);
@@ -71,10 +72,10 @@ export class AddDialogComponent {
   }
 
   addItem(): void {
-    if (this.loadingSpinner()) {
+    if (this.loadingSpinner() || this.time.controls.length >= 5) {
       return;
     }
-    const newItem = new FormControl(new Date(), [Validators.required]);
+    const newItem = new FormControl(null, [Validators.required]);
     this.time.push(newItem);
     this.formGroup.markAsDirty();
   }
