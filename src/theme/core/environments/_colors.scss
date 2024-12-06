@@ -1,0 +1,41 @@
+@use "../mixins";
+
+$primary-color: #013747 !default;
+$primary-color-rgb: mixins.to-rgb($primary-color) !default;
+
+$accent-color: #dc961a !default;
+$accent-color-rgb: mixins.to-rgb($accent-color) !default;
+
+// ----------------colors----------------
+$bs-blue: #0d6efd !default;
+$bs-blue-rgb: mixins.to-rgb($bs-blue) !default;
+
+$bs-indigo: #6610f2 !default;
+$bs-indigo-rgb: mixins.to-rgb($bs-indigo) !default;
+
+$bs-purple: #6f42c1 !default;
+$bs-purple-rgb: mixins.to-rgb($bs-purple) !default;
+
+$bs-pink: #d63384 !default;
+$bs-pink-rgb: mixins.to-rgb($bs-pink) !default;
+
+$bs-red: #dc3545 !default;
+$bs-red-rgb: mixins.to-rgb($bs-red) !default;
+
+$bs-orange: #fd7e14 !default;
+$bs-orange-rgb: mixins.to-rgb($bs-orange) !default;
+
+$bs-yellow-dep: #ffc107 !default;
+$bs-yellow-dep-rgb: mixins.to-rgb($bs-yellow-dep) !default;
+
+$bs-yellow: #dda600 !default;
+$bs-yellow-rgb: mixins.to-rgb($bs-yellow) !default;
+
+$bs-green: #198754 !default;
+$bs-green-rgb: mixins.to-rgb($bs-green) !default;
+
+$bs-teal: #20c997 !default;
+$bs-teal-rgb: mixins.to-rgb($bs-teal) !default;
+
+$bs-cyan: #0dcaf0 !default;
+$bs-cyan-rgb: mixins.to-rgb($bs-cyan) !default;

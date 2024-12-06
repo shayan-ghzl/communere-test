@@ -1,0 +1,32 @@
+@use "environments" as env;
+
+@mixin layoutMaxWidth {
+  @media (max-width: #{env.$layout-max-width + env.$tablet-padding-x * 2}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{env.$tablet-width + 1}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: env.$tablet-width) {
+    @content;
+  }
+}
+@mixin smallTablet {
+  @media (max-width: env.$small-tablet-width) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: env.$mobile-width) {
+    @content;
+  }
+}
+@mixin smallMobile {
+  @media (max-width: env.$small-mobile-width) {
+    @content;
+  }
+}

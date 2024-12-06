@@ -1,0 +1,56 @@
+.glo3d-dialog-container {
+    --mdc-dialog-container-shape: 8px;
+
+    .mdc-dialog__title {
+        display: flex;
+        align-items: center;
+        padding: 16px 16px 24px 16px;
+        --heading-1-font-size: 16px;
+        --heading-1-font-weight: 600;
+        --heading-1-color: #565659;
+        --heading-1-margin-top: 0;
+        --heading-1-margin-bottom: 0;
+
+        &::before {
+            height: 0;
+        }
+
+        .mat-mdc-icon-button {
+            margin-left: auto;
+            padding: 0;
+            --mdc-icon-button-state-layer-size: 32px;
+            --mdc-icon-button-icon-size: 18px;
+
+            .mat-mdc-button-touch-target {
+                width: 36px;
+                height: 36px;
+            }
+            i {
+                width: 18px;
+                height: 18px;
+                margin: auto;
+                --fa-display: block;
+            }
+        }
+    }
+
+    .mdc-dialog__content {
+        --mat-dialog-with-actions-content-padding: 16px 16px 32px 16px;
+        --paragraph-text-align: center;
+        --paragraph-color: #2F2F31;
+    }
+
+    .mdc-dialog__actions {
+        padding: 0 16px 24px 16px;
+        gap: 16px;
+
+        .mat-mdc-button-base {
+            width: var(--button-width, 120px);
+            --mdc-outlined-button-outline-color: #0000001F;
+
+            &:last-child {
+                margin-left: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+@use '@angular/material' as mat;
+@use "../core/environments" as env;
+@use "../core/mixins" as mix;
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$primary-palette: (
+    50: mix.tint-color(env.$primary-color, 90%),
+    100: mix.tint-color(env.$primary-color, 80%),
+    200: mix.tint-color(env.$primary-color, 60%),
+    300: mix.tint-color(env.$primary-color, 40%),
+    400: mix.tint-color(env.$primary-color, 20%),
+    500: env.$primary-color,
+    600: mix.shade-color(env.$primary-color, 20%),
+    700: mix.shade-color(env.$primary-color, 40%),
+    800: mix.shade-color(env.$primary-color, 60%),
+    900: mix.shade-color(env.$primary-color, 80%),
+    A100: mix.tint-color(env.$primary-color, 15%),
+    A200: mix.tint-color(env.$primary-color, 30%),
+    A400: mix.tint-color(env.$primary-color, 50%),
+    A700: mix.tint-color(env.$primary-color, 70%),
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text,
+    )
+);
+
+$accent-palette: (
+    50: mix.tint-color(env.$accent-color, 90%),
+    100: mix.tint-color(env.$accent-color, 80%),
+    200: mix.tint-color(env.$accent-color, 60%),
+    300: mix.tint-color(env.$accent-color, 40%),
+    400: mix.tint-color(env.$accent-color, 20%),
+    500: env.$accent-color,
+    600: mix.shade-color(env.$accent-color, 20%),
+    700: mix.shade-color(env.$accent-color, 40%),
+    800: mix.shade-color(env.$accent-color, 60%),
+    900: mix.shade-color(env.$accent-color, 80%),
+    A100: mix.tint-color(env.$accent-color, 15%),
+    A200: mix.tint-color(env.$accent-color, 30%),
+    A400: mix.tint-color(env.$accent-color, 50%),
+    A700: mix.tint-color(env.$accent-color, 70%),
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text,
+    )
+);
+
+$primary: mat.m2-define-palette($primary-palette);
+$accent: mat.m2-define-palette($accent-palette);
+
+// --------------------------------
+$main-theme: mat.m2-define-light-theme((
+    color: (
+        primary: $primary,
+        accent: $accent,
+    ),
+    typography: mat.m2-define-typography-config($font-family: var(--body-font-family, #{env.$body-font-family})),
+    density: 0,
+));
+// --------------------------------
+$form-field-density-theme: mat.m2-define-light-theme(( density: -3 ));

@@ -1,0 +1,36 @@
+@function to-rgb($value) {
+    @return rgb(red($value), green($value), blue($value));
+}
+@function opaque($background, $foreground) {
+    @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
+}
+@function tint-color($color, $weight) {
+    @return mix(white, $color, $weight);
+}
+@function shade-color($color, $weight) {
+    @return mix(black, $color, $weight);
+}
+@function shift-color($color, $weight) {
+    @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+}
+@mixin all-color-steps($color: gray, $prefix: 'gray') {
+    --#{$prefix}-50: #{tint-color($color, 90%)};
+    --#{$prefix}-100: #{tint-color($color, 80%)};
+    --#{$prefix}-150: #{tint-color($color, 70%)};
+    --#{$prefix}-200: #{tint-color($color, 60%)};
+    --#{$prefix}-250: #{tint-color($color, 50%)};
+    --#{$prefix}-300: #{tint-color($color, 40%)};
+    --#{$prefix}-350: #{tint-color($color, 30%)};
+    --#{$prefix}-400: #{tint-color($color, 20%)};
+    --#{$prefix}-450: #{tint-color($color, 10%)};
+    --#{$prefix}-500: #{$color};
+    --#{$prefix}-550: #{shade-color($color, 10%)};
+    --#{$prefix}-600: #{shade-color($color, 20%)};
+    --#{$prefix}-650: #{shade-color($color, 30%)};
+    --#{$prefix}-700: #{shade-color($color, 40%)};
+    --#{$prefix}-750: #{shade-color($color, 50%)};
+    --#{$prefix}-800: #{shade-color($color, 60%)};
+    --#{$prefix}-850: #{shade-color($color, 70%)};
+    --#{$prefix}-900: #{shade-color($color, 80%)};
+    --#{$prefix}-950: #{shade-color($color, 90%)};
+}
