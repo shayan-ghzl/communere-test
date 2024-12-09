@@ -18,6 +18,11 @@ export function dateNotDuplicatedValidator(): ValidatorFn {
                     dateControl.setErrors({ dateDuplicated: true });
                 } else {
                     dateSet.add(timeValue);
+
+                    const existingErrors = dateControl.errors || {};
+                    delete existingErrors['dateDuplicated'];
+
+                    dateControl.setErrors(Object.keys(existingErrors).length ? existingErrors : null);
                 }
             }
         }
